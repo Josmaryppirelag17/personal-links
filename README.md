@@ -2,10 +2,14 @@
 
 > Personal link-in-bio with cyberpunk aesthetics, interactive 3D canvas background, floating physics badges, and real contact form.
 
-[![CI](https://github.com/Josmaryppirelag17/linktree-personal/actions/workflows/ci.yml/badge.svg)](https://github.com/Josmaryppirelag17/linktree-personal/actions/workflows/ci.yml)
-[![Deploy](https://github.com/Josmaryppirelag17/linktree-personal/actions/workflows/deploy.yml/badge.svg)](https://github.com/Josmaryppirelag17/linktree-personal/actions/workflows/deploy.yml)
-[![Mozilla Observatory](https://img.shields.io/badge/Mozilla%20Observatory-A%2B-brightgreen)]()
-[![i18n](https://img.shields.io/badge/i18n-ES%2FEN-ff69b4)]()
+[![CI](https://github.com/Josmaryppirelag17/personal-links/actions/workflows/ci.yml/badge.svg)](https://github.com/Josmaryppirelag17/personal-links/actions/workflows/ci.yml)
+[![Deploy](https://github.com/Josmaryppirelag17/personal-links/actions/workflows/deploy.yml/badge.svg)](https://github.com/Josmaryppirelag17/personal-links/actions/workflows/deploy.yml)
+[![Mozilla Observatory](https://img.shields.io/badge/Mozilla%20Observatory-A%2B-brightgreen)](https://developer.mozilla.org/en-US/observatory/analyze?host=linktree.josmarypirela.dev)
+[![i18n](https://img.shields.io/badge/i18n-ES%2FEN-ff69b4)](https://github.com/Josmaryppirelag17/personal-links)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)](https://www.typescriptlang.org/)
+[![Bundle](https://img.shields.io/badge/bundle-83%20kB-success)]()
+
+![OG Image](public/og-image.svg)
 
 ---
 
