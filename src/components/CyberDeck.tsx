@@ -149,9 +149,12 @@ export default function CyberDeck({ config, updateConfig: _updateConfig, isMuted
         </div>
 
         <div
-          className="grid grid-cols-3 gap-2.5 mb-6 cursor-pointer group"
+          role="button"
+          tabIndex={0}
+          className="grid grid-cols-3 gap-2.5 mb-6 cursor-pointer group focus:outline-none focus:ring-1 focus:ring-brand-pink"
           id="telemetry-grid"
           onClick={onOpenStats}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onOpenStats(); } }}
         >
           {[
             { labelKey: 'stat_links_label', itemKey: 'hud_links', count: config.links.length, color: '#fd1eb1', barWidth: Math.min(100, config.links.length * 15) },
