@@ -142,15 +142,6 @@ export const DEFAULT_LINKS: SocialLink[] = [
     active: true
   },
   {
-    id: 'lnk-03',
-    label: 'CODEPEN',
-    url: 'https://codepen.io/Josmaryppirelag17',
-    icon: 'CodePen',
-    description: 'Experimentos interactivos y prototipos',
-    color: '#dcf10b',
-    active: true
-  },
-  {
     id: 'lnk-04',
     label: 'PORTFOLIO',
     url: 'https://josmarypirela.dev',
