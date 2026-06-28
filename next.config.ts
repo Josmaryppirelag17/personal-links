@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 768, 1024, 1280, 1536],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
   },
+  async redirects() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/favicon.svg',
+        permanent: true,
+      },
+    ];
+  },
   headers: async () => [
     {
       source: '/(.*).(svg|png|jpg|jpeg|webp|avif|ico)',
