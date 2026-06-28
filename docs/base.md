@@ -1,8 +1,8 @@
-# 🔗 Linktree Personal — Catálogo de Contacto WebGL
+# 🔗 Linktree Personal — WebGL Contact Catalog
 
-> Sitio personal tipo linktree con experiencia WebGL interactiva (warp drive, glassmorphism). Simplificado para uso personal.
+> Personal linktree-style site with interactive WebGL experience (warp drive, glassmorphism). Simplified for personal use.
 
-Estado actual: ✅ Cerrado
+Status: ✅ Closed
 
 ---
 
@@ -10,37 +10,36 @@ Estado actual: ✅ Cerrado
 
 - Next.js 15 (App Router) + React 19 + TypeScript strict
 - Tailwind CSS 4 + @tailwindcss/postcss
-- Three.js + Motion (animaciones) + Lucide React (iconos)
+- Canvas 2D + Motion (animations) + Lucide React (icons)
 - Zod + React Hook Form + @hookform/resolvers
-- Zustand + TanStack Query
 
 ---
 
-# 1. Concepto
+# 1. Concept
 
-Página personal interactiva con experiencia visual WebGL inmersiva (efecto warp drive) y secciones tipo landing page.
+Interactive personal page with immersive visual experience (Canvas 2D grid, particles) and linktree-style landing sections.
 
 ---
 
-# 2. Funcionalidades
+# 2. Features
 
-* Hero animado con palabras rotativas
-* Bento grid interactiva con 5 secciones temáticas
-* WarpDriveShader Three.js en tiempo real con sliders de control
-* Túnel de transición animado entre secciones
-* Cursor personalizado con aura
-* Modal de estadísticas por sección
-* Chat AI (Gemini/Groq) como consultor creativo
-* Encabezado glassmorphism adaptativo según fase
-* Testimonios con rating stars
+* Animated hero with rotating words
+* Interactive bento grid with 5 themed sections
+* Real-time Canvas 2D background with cursor-reactive particles
+* Animated transition tunnel between sections
+* Custom cursor with neon aura
+* Statistics modal per section
+* AI Chat (Gemini/Groq) as creative consultant
+* Adaptive glassmorphism header
+* Testimonials with rating stars
 
 ---
 
 # 3. Roadmap
 
-## W0 — Fundación ✅
+## W0 — Foundation ✅
 Next.js 15 + React 19 + Tailwind 4 + TypeScript strict
 Clean Architecture + Atomic Design + ESLint 9 + CI/CD + pnpm
 
-## ✅ Cerrado
-Proyecto simplificado para uso personal. No requiere backend real ni tests automatizados.
+## ✅ Closed
+Project simplified for personal use. No backend or automated tests required.
