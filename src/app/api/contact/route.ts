@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { contactSchema, isFormTimestampValid, formatZodErrors } from '@/lib/validation';
+import { processContactForm } from '@/lib/services/ContactService';
 
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
 const MAX_REQUESTS = 10;
@@ -50,10 +51,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, email, message, fax, website, formTimestamp } = parsed.data;
+    const { fax, website, formTimestamp } = parsed.data;
 
     if (fax || website) {
-      return NextResponse.json({ success: true, data: { db: false, email: false, telegram: false } });
+      return NextResponse.json({ success: true, data: { email: false, telegram: false } });
     }
 
     if (!isFormTimestampValid(formTimestamp)) {
@@ -63,12 +64,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log('[CONTACT] New message:', { name, email, message: message.slice(0, 100) });
+    const result = await processContactForm(parsed.data);
 
-    return NextResponse.json({
-      success: true,
-      data: { db: true, email: false, telegram: false },
-    });
+    console.log('[CONTACT] Result:', result);
+
+    return NextResponse.json({ success: true, data: result });
   } catch (err) {
     console.error('[CONTACT] Error:', err);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
