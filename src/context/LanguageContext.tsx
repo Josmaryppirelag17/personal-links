@@ -50,10 +50,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     writeLanguage(language);
-    document.title =
-      language === 'es'
-        ? 'Josmary Pirela | Creative Software Engineer'
-        : 'Josmary Pirela | Creative Software Engineer';
+    document.title = 'Josmary Pirela | Creative Software Engineer';
   }, [language]);
 
   const toggleLanguage = () => setLanguage(language === 'es' ? 'en' : 'es');
