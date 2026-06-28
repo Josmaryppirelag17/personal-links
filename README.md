@@ -3,10 +3,11 @@
 > Personal link-in-bio with cyberpunk aesthetics, interactive 3D canvas background, floating physics badges, and real contact form.
 
 [![CI](https://github.com/Josmaryppirelag17/personal-links/actions/workflows/ci.yml/badge.svg)](https://github.com/Josmaryppirelag17/personal-links/actions/workflows/ci.yml)
-[![Mozilla Observatory](https://img.shields.io/badge/Mozilla%20Observatory-A%2B-brightgreen)](https://developer.mozilla.org/en-US/observatory/analyze?host=linktree.josmarypirela.dev)
+[![Mozilla Observatory](https://img.shields.io/badge/Mozilla%20Observatory-A%2B-brightgreen)](https://developer.mozilla.org/en-US/observatory/analyze?host=link.josmarypirela.dev)
 [![i18n](https://img.shields.io/badge/i18n-ES%2FEN-ff69b4)](https://github.com/Josmaryppirelag17/personal-links)
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)](https://www.typescriptlang.org/)
 [![Bundle](https://img.shields.io/badge/bundle-83%20kB-success)]()
+[![PageSpeed](https://img.shields.io/badge/PageSpeed-99%20Desktop%20%2F%2097%20Mobile-success)](https://pagespeed.web.dev/analysis/https-link-josmarypirela-dev/3geds1q7ic?form_factor=desktop)
 
 ![OG Image](public/og-image.svg)
 
@@ -14,27 +15,45 @@
 
 ## 📊 Quality Audits
 
-| Category | Score | Tool |
-|---|---|---|
-| **Performance** | 🚀 Optimized | PageSpeed Insights |
-| **Accessibility** | ♿ Role / ARIA / Skip-to-content | PageSpeed Insights |
-| **Best Practices** | ✅ 100/100 | PageSpeed Insights |
-| **SEO** | ✅ OG / Sitemap / Robots / Canonical | PageSpeed Insights |
-| **Security** | A+ 🏆 (nonce-based CSP) | Mozilla Observatory |
+| Category | Desktop | Mobile | Tool |
+|---|---|---|---|
+| **Performance** | 99/100 🏆 | 97/100 🏆 | PageSpeed Insights |
+| **Accessibility** | 96/100 | 96/100 | PageSpeed Insights |
+| **Best Practices** | 96/100 | 96/100 | PageSpeed Insights |
+| **SEO** | 100/100 | 100/100 | PageSpeed Insights |
+| **Security** | A+ 🏆 (nonce-based CSP) | A+ 🏆 | Mozilla Observatory |
 
-> ✅ **Mozilla Observatory**: A+ — nonce-based CSP with strict-dynamic, HSTS preload, X-Frame-Options DENY.
+> ✅ **PageSpeed Insights**: [Desktop report](https://pagespeed.web.dev/analysis/https-link-josmarypirela-dev/3geds1q7ic?form_factor=desktop) · [Mobile report](https://pagespeed.web.dev/analysis/https-link-josmarypirela-dev/3geds1q7ic?form_factor=mobile)
+>
+> ✅ **Mozilla Observatory**: A+ — nonce-based CSP with strict-dynamic, HSTS preload, X-Frame-Options DENY. [View report](https://developer.mozilla.org/en-US/observatory/analyze?host=link.josmarypirela.dev)
 
 ---
 
 ## 🎯 Core Web Vitals
 
+### Desktop
+
 | Metric | Value | Rating |
 |---|---|---|
-| **First Contentful Paint** | <0.3 s | ✅ Good |
-| **Largest Contentful Paint** | <0.6 s | ✅ Good |
-| **Total Blocking Time** | <20 ms | ✅ Good |
-| **Cumulative Layout Shift** | <0.05 | ✅ Good |
-| **Speed Index** | <1.0 s | ✅ Good |
+| **First Contentful Paint** | 0.2 s | ✅ Good |
+| **Largest Contentful Paint** | 0.6 s | ✅ Good |
+| **Total Blocking Time** | 0 ms | ✅ Good |
+| **Cumulative Layout Shift** | 0 | ✅ Good |
+| **Speed Index** | 1.2 s | ✅ Good |
+
+### Mobile
+
+| Metric | Value | Rating |
+|---|---|---|
+| **First Contentful Paint** | 0.9 s | ✅ Good |
+| **Largest Contentful Paint** | 2.5 s | ✅ Good |
+| **Total Blocking Time** | 20 ms | ✅ Good |
+| **Cumulative Layout Shift** | 0 | ✅ Good |
+| **Speed Index** | 2.8 s | ✅ Good |
+
+> 🔗 [PageSpeed Insights report](https://pagespeed.web.dev/analysis/https-link-josmarypirela-dev/3geds1q7ic?form_factor=desktop)
+>
+> 🔗 [Mozilla Observatory report](https://developer.mozilla.org/en-US/observatory/analyze?host=link.josmarypirela.dev)
 
 ---
 
@@ -152,7 +171,7 @@ pnpm build && pnpm start       # Production
 
 ## 🔗 Links
 
-[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen)](https://linktree.josmarypirela.dev)
+[![Live Demo](https://img.shields.io/badge/demo-online-brightgreen)](https://link.josmarypirela.dev)
 [![Portfolio](https://img.shields.io/badge/creator-Josmary%20Pirela-ff69b4)](https://josmarypirela.dev)
 
 ---
