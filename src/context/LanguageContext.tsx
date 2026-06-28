@@ -52,7 +52,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     writeLanguage(language);
     document.title =
       language === 'es'
-        ? 'Josmary Pirela | Desarrolladora Full-Stack Creativa'
+        ? 'Josmary Pirela | Creative Software Engineer'
         : 'Josmary Pirela | Creative Software Engineer';
   }, [language]);
 

@@ -14,13 +14,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: 'Josmary Pirela | Creative Software Engineer',
   description:
-    'Linktree personal de Josmary Pirela: desarrollador full-stack creativo, proyectos, experiencia y contacto.',
+    'Linktree personal de Josmary Pirela: creative software engineer, proyectos, experiencia y contacto.',
   metadataBase: new URL(APP_URL),
   alternates: { canonical: '/' },
+  icons: { icon: '/favicon.svg' },
   openGraph: {
     title: 'Josmary Pirela | Creative Software Engineer',
     description:
-      'Linktree personal de Josmary Pirela: desarrollador full-stack creativo.',
+      'Linktree personal de Josmary Pirela: creative software engineer.',
     url: APP_URL,
     siteName: 'Josmary Pirela',
     locale: 'es_ES',
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Josmary Pirela | Creative Software Engineer',
     description:
-      'Linktree personal de Josmary Pirela: desarrollador full-stack creativo.',
+      'Linktree personal de Josmary Pirela: creative software engineer.',
   },
   robots: { index: true, follow: true },
 };
