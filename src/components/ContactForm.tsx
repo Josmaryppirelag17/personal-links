@@ -4,11 +4,16 @@ import { useRef, useState, useEffect, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'motion/react';
-import { Send, Check } from 'lucide-react';
+import { Send } from 'lucide-react';
 import { z } from 'zod';
 import { useLanguage } from '../context/LanguageContext';
 import { cyberSynth } from '../utils/audio';
 import { appendCyberMessage } from '../lib/cyberMessages';
+
+const INPUT_CLASS =
+  'w-full bg-brand-bg border border-brand-cyan/30 rounded-none p-2.5 text-xs text-white placeholder-brand-cyan/30 focus:outline-none focus:border-brand-pink focus:shadow-[0_0_10px_rgba(253,30,177,0.25)] transition-all';
+
+const LABEL_CLASS = 'block text-[10px] text-brand-cyan uppercase tracking-widest font-bold mb-1';
 
 const clientContactSchema = z.object({
   name: z.string().min(1).max(120).trim(),
@@ -67,18 +72,11 @@ export default function ContactForm({ isMuted }: ContactFormProps) {
   const onSubmit = async (data: FormData) => {
     cyberSynth.playClick();
 
-    const payload = {
-      ...data,
-      fax: '',
-      website: '',
-      formTimestamp: formTimestampRef.current,
-    };
-
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...data, fax: '', website: '', formTimestamp: formTimestampRef.current }),
       });
 
       if (!res.ok) {
@@ -91,7 +89,6 @@ export default function ContactForm({ isMuted }: ContactFormProps) {
       setIsSent(true);
       reset();
     } catch (err) {
-      console.error('[ContactForm] Submit error:', err);
       setTerminalLines((prev) => [...prev, `[ERROR]: ${err instanceof Error ? err.message : 'Connection lost'}`]);
     }
   };
@@ -104,11 +101,9 @@ export default function ContactForm({ isMuted }: ContactFormProps) {
         className="text-center py-8 font-mono"
       >
         <div className="w-16 h-16 mx-auto mb-4 rounded-none border-2 border-brand-lime flex items-center justify-center">
-          <Check className="w-8 h-8 text-brand-lime" />
+          <Send className="w-8 h-8 text-brand-lime" />
         </div>
-        <p className="text-brand-lime text-xs font-bold tracking-wider">
-          {t('contact_success')}
-        </p>
+        <p className="text-brand-lime text-xs font-bold tracking-wider">{t('contact_success')}</p>
         <button
           onClick={() => { setIsSent(false); setShowTerminal(false); setTerminalLines([]); formTimestampRef.current = Date.now(); }}
           className="mt-4 font-mono text-[9px] text-brand-cyan hover:text-white border border-brand-cyan/30 px-3 py-1.5 transition-colors cursor-pointer"
@@ -119,55 +114,40 @@ export default function ContactForm({ isMuted }: ContactFormProps) {
     );
   }
 
+  const fields = [
+    { name: 'name' as const, label: t('contact_name_label'), placeholder: t('contact_name_placeholder'), type: 'text' as const },
+    { name: 'email' as const, label: 'EMAIL_CHANNEL:', placeholder: 'e.g. user@network.net', type: 'email' as const },
+    { name: 'message' as const, label: t('contact_message_label'), placeholder: t('contact_message_placeholder'), type: 'textarea' as const },
+  ];
+
   return (
     <div className="font-mono text-left">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-3.5" noValidate>
-        <div>
-          <label className="block text-[10px] text-brand-cyan uppercase tracking-widest font-bold mb-1">
-            {t('contact_name_label')}
-          </label>
-          <input
-            {...register('name')}
-            placeholder={t('contact_name_placeholder')}
-            onFocus={() => cyberSynth.playHover()}
-            className="w-full bg-brand-bg border border-brand-cyan/30 rounded-none p-2.5 text-xs text-white uppercase placeholder-brand-cyan/30 focus:outline-none focus:border-brand-pink focus:shadow-[0_0_10px_rgba(253,30,177,0.25)] transition-all"
-          />
-          {errors.name && (
-            <p className="text-[9px] text-brand-pink mt-1">{errors.name.message}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-[10px] text-brand-cyan uppercase tracking-widest font-bold mb-1">
-            EMAIL_CHANNEL:
-          </label>
-          <input
-            {...register('email')}
-            type="email"
-            placeholder="e.g. user@network.net"
-            onFocus={() => cyberSynth.playHover()}
-            className="w-full bg-brand-bg border border-brand-cyan/30 rounded-none p-2.5 text-xs text-white placeholder-brand-cyan/30 focus:outline-none focus:border-brand-pink focus:shadow-[0_0_10px_rgba(253,30,177,0.25)] transition-all"
-          />
-          {errors.email && (
-            <p className="text-[9px] text-brand-pink mt-1">{errors.email.message}</p>
-          )}
-        </div>
-
-        <div>
-          <label className="block text-[10px] text-brand-cyan uppercase tracking-widest font-bold mb-1">
-            {t('contact_message_label')}
-          </label>
-          <textarea
-            {...register('message')}
-            rows={3}
-            placeholder={t('contact_message_placeholder')}
-            onFocus={() => cyberSynth.playHover()}
-            className="w-full bg-brand-bg border border-brand-cyan/30 rounded-none p-2.5 text-xs text-white placeholder-brand-cyan/30 focus:outline-none focus:border-brand-pink focus:shadow-[0_0_10px_rgba(253,30,177,0.25)] transition-all"
-          />
-          {errors.message && (
-            <p className="text-[9px] text-brand-pink mt-1">{errors.message.message}</p>
-          )}
-        </div>
+        {fields.map(({ name, label, placeholder, type }) => (
+          <div key={name}>
+            <label className={LABEL_CLASS}>{label}</label>
+            {type === 'textarea' ? (
+              <textarea
+                {...register(name)}
+                rows={3}
+                placeholder={placeholder}
+                onFocus={() => cyberSynth.playHover()}
+                className={INPUT_CLASS}
+              />
+            ) : (
+              <input
+                {...register(name)}
+                type={type}
+                placeholder={placeholder}
+                onFocus={() => cyberSynth.playHover()}
+                className={INPUT_CLASS}
+              />
+            )}
+            {errors[name] && (
+              <p className="text-[9px] text-brand-pink mt-1">{errors[name]?.message}</p>
+            )}
+          </div>
+        ))}
 
         <button
           type="submit"

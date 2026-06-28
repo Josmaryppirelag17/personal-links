@@ -153,38 +153,22 @@ export default function CyberDeck({ config, updateConfig: _updateConfig, isMuted
           id="telemetry-grid"
           onClick={onOpenStats}
         >
-          <div className="bg-brand-bg/55 border border-brand-cyan/25 p-2 rounded-none font-mono text-[9px] group-hover:border-brand-pink/50 transition-colors">
-            <div className="text-brand-cyan font-semibold mb-1">{t('stat_links_label')}</div>
-            <div className="flex items-center justify-between text-brand-pink">
-              <span>{t('hud_links')}</span>
-              <span className="font-bold">{config.links.length}</span>
+          {[
+            { labelKey: 'stat_links_label', itemKey: 'hud_links', count: config.links.length, color: '#fd1eb1', barWidth: Math.min(100, config.links.length * 15) },
+            { labelKey: 'stat_projects_label', itemKey: 'hud_projects', count: config.projects.length, color: '#18bec7', barWidth: Math.min(100, config.projects.length * 20) },
+            { labelKey: 'stat_techs_label', itemKey: 'hud_techs', count: config.techIds.length, color: '#dcf10b', barWidth: Math.min(100, config.techIds.length * 9) },
+          ].map((stat) => (
+            <div key={stat.labelKey} className="bg-brand-bg/55 border border-brand-cyan/25 p-2 rounded-none font-mono text-[9px] group-hover:border-brand-pink/50 transition-colors">
+              <div className="text-brand-cyan font-semibold mb-1">{t(stat.labelKey)}</div>
+              <div className="flex items-center justify-between" style={{ color: stat.color }}>
+                <span>{t(stat.itemKey)}</span>
+                <span className="font-bold">{stat.count}</span>
+              </div>
+              <div className="w-full bg-[#10103a] h-1 rounded-none overflow-hidden mt-1">
+                <div className="h-full" style={{ width: `${stat.barWidth}%`, backgroundColor: stat.color }} />
+              </div>
             </div>
-            <div className="w-full bg-[#10103a] h-1 rounded-none overflow-hidden mt-1 pb-0">
-              <div className="bg-brand-pink h-full" style={{ width: `${Math.min(100, config.links.length * 15)}%` }} />
-            </div>
-          </div>
-
-          <div className="bg-brand-bg/55 border border-brand-cyan/25 p-2 rounded-none font-mono text-[9px] group-hover:border-brand-pink/50 transition-colors">
-            <div className="text-brand-cyan font-semibold mb-1">{t('stat_projects_label')}</div>
-            <div className="flex items-center justify-between text-brand-cyan">
-              <span>{t('hud_projects')}</span>
-              <span className="font-bold">{config.projects.length}</span>
-            </div>
-            <div className="w-full bg-[#10103a] h-1 rounded-none overflow-hidden mt-1">
-              <div className="bg-brand-cyan h-full" style={{ width: `${Math.min(100, config.projects.length * 20)}%` }} />
-            </div>
-          </div>
-
-          <div className="bg-brand-bg/55 border border-brand-cyan/25 p-2 rounded-none font-mono text-[9px] group-hover:border-brand-pink/50 transition-colors">
-            <div className="text-brand-cyan font-semibold mb-1">{t('stat_techs_label')}</div>
-            <div className="flex items-center justify-between text-brand-lime">
-              <span>{t('hud_techs')}</span>
-              <span className="font-bold">{config.techIds.length}</span>
-            </div>
-            <div className="w-full bg-[#10103a] h-1 rounded-none overflow-hidden mt-1">
-              <div className="bg-brand-lime h-full" style={{ width: `${Math.min(100, config.techIds.length * 9)}%` }} />
-            </div>
-          </div>
+          ))}
         </div>
 
         <div className="flex border-b border-brand-cyan/20 mb-5 relative">
