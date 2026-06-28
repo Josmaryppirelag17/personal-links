@@ -78,7 +78,26 @@ async function sendTelegram(
   }
 
   try {
-    const escapeMarkdown = (text: string) => text.replace(/[_*[\]()~`>#+=|{}.!-]/g, '\\$&');
+    const escapeMarkdown = (text: string) =>
+      text
+        .replaceAll('_', '\\_')
+        .replaceAll('*', '\\*')
+        .replaceAll('[', '\\[')
+        .replaceAll(']', '\\]')
+        .replaceAll('(', '\\(')
+        .replaceAll(')', '\\)')
+        .replaceAll('~', '\\~')
+        .replaceAll('`', '\\`')
+        .replaceAll('>', '\\>')
+        .replaceAll('#', '\\#')
+        .replaceAll('+', '\\+')
+        .replaceAll('=', '\\=')
+        .replaceAll('|', '\\|')
+        .replaceAll('{', '\\{')
+        .replaceAll('}', '\\}')
+        .replaceAll('.', '\\.')
+        .replaceAll('!', '\\!')
+        .replaceAll('-', '\\-');
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10_000);
