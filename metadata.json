@@ -1,0 +1,6 @@
+{
+  "name": "Cyberpunk Link Bio & Portfolio",
+  "description": "Maximalist cyberpunk-themed personal link-in-bio hub with interactive neon physics, floating tech icons, and full-screen customization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+
+  --color-brand-bg: #111232;
+  --color-brand-pale: #dbeaec;
+  --color-brand-cyan: #18bec7;
+  --color-brand-pink: #fd1eb1;
+  --color-brand-lime: #dcf10b;
+
+  --animate-scanline: scanline 6s linear infinite;
+  --animate-cyber-pulse: cyber-pulse 2s ease-in-out infinite alternate;
+  --animate-float: float 4s ease-in-out infinite;
+  --animate-grid-move: grid-move 20s linear infinite;
+  --animate-hue-rotate: hue-rotate 10s linear infinite;
+}
+
+.cyber-text-shadow {
+  text-shadow: 2px 2px 0px var(--color-brand-cyan);
+}
+
+.skew-cyber {
+  transform: skewX(-2deg);
+}
+
+.corner-accent {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--color-brand-pink);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.top-left {
+  top: -6px;
+  left: -6px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.bottom-right {
+  bottom: -6px;
+  right: -6px;
+  border-left: none;
+  border-top: none;
+}
+
+@keyframes neonGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(253, 30, 177, 0.4), inset 0 0 10px rgba(253, 30, 177, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(253, 30, 177, 0.6), inset 0 0 18px rgba(253, 30, 177, 0.3);
+  }
+}
+
+.high-density-glow {
+  animation: neonGlow 4s infinite ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
